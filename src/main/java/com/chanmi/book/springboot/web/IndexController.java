@@ -1,5 +1,6 @@
 package com.chanmi.book.springboot.web;
 
+import com.chanmi.book.springboot.config.auth.LoginUser;
 import com.chanmi.book.springboot.config.auth.dto.SessionUser;
 import com.chanmi.book.springboot.service.posts.PostsService;
 import com.chanmi.book.springboot.web.dto.PostsResponseDto;
@@ -23,11 +24,26 @@ public class IndexController {//페이지에 관련된 컨으롤러는 모두 �
     private final PostsService postsService;
     private final HttpSession httpSession;
 
+    //직접 세션 가져오는 버전
+//    @GetMapping("/")
+//    public String index(Model model){
+//        model.addAttribute("posts", postsService.findAllDesc());
+//
+//        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+//
+//        if(user != null){
+//            model.addAttribute("loginName", user.getName());
+//        }
+//
+//        return "index";
+//    }
+
+    //@LoginUser로 세션 가져오기
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, @LoginUser SessionUser user){
         model.addAttribute("posts", postsService.findAllDesc());
 
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+//        SessionUser user = (SessionUser) httpSession.getAttribute("user");
 
         if(user != null){
             model.addAttribute("loginName", user.getName());
