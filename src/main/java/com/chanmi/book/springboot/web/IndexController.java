@@ -30,8 +30,7 @@ public class IndexController {//페이지에 관련된 컨으롤러는 모두 �
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
 
         if(user != null){
-            model.addAttribute("userName", user.getName());
-            System.out.println("********************** 이름 " + user.getName());
+            model.addAttribute("loginName", user.getName());
         }
 
         return "index";
