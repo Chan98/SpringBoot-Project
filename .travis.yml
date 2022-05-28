@@ -24,6 +24,7 @@ before_deploy:
   - zip -r springboot-project-webservice *
   - mkdir -p deploy
   - mv springboot-project-webservice.zip deploy/springboot-project.zip
+  - echo pwd
 
 deploy:
   - provider: s3
