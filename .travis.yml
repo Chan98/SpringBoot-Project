@@ -23,9 +23,8 @@ script: "./gradlew clean build"
 before_deploy:
   - zip -r springboot-project-webservice *
   - mkdir -p deploy
-  - mv springboot-project-webservice.zip deploy/springboot-project.zip
-  - echo pwd
-
+  - mv springboot-project-webservice.zip deploy/springboot-project-webservice.zip
+  - pwd
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY # Travis에 설정해줬음
