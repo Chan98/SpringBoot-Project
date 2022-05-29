@@ -22,19 +22,12 @@ script: "./gradlew clean build"
 # deploy 전에 실행
 before_deploy:
   - mkdir -p before-deploy
-  - pwd
   - cp scripts/*.sh before-deploy/
-  - pwd
   - cp appspec.yml before-deploy/
-  - pwd
   - cp build/libs/*.jar before-deploy/
-  - pwd
-  - cd before-deploy && zip -r before-deploy
-  - pwd
+  - cd before-deploy && zip -r before-deploy *
   - cd ../ && mkdir -p deploy
-  - pwd
   - mv before-deploy/before-deploy.zip deploy/springboot-project-webservice.zip
-  - pwd
 
 deploy:
   - provider: s3
