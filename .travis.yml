@@ -24,8 +24,10 @@ before_deploy:
   - zip -r springboot-project-webservice *
   - pwd
   - mkdir -p deploy
+  - pwd
   - mv springboot-project-webservice.zip deploy/springboot-project-webservice.zip
   - pwd
+
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY # Travis에 설정해줬음
