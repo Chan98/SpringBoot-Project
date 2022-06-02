@@ -23,6 +23,6 @@ public class IndexControllerTest {
         String body = this.restTemplate.getForObject("/", String.class);
 
         //then, 호출해서 가져왔을 때 index.mustache에 있는 문자열과 같은지 검사
-        assertThat(body).contains("스프링 부트로 시작하는 웹 서비스");
+        assertThat(body).contains("소셜로그인 게시판");
     }
 }
