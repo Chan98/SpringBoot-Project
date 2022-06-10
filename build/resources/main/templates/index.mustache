@@ -6,23 +6,77 @@
 </head>
 <body>
     {{>layout/header}}
-    <h1>스프링 부트로 시작하는 웹 서비스 Ver.2</h1>
-    <div class="col-md-12">
-        <div class="row">
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <!--            <a class="navbar-brand" href="#page-top">Start Bootstrap</a>-->
+            <!--            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
+            <!--                Menu-->
+            <!--                <i class="fas fa-bars"></i>-->
+            <!--            </button>-->
+            <!--            <div class="collapse navbar-collapse" id="navbarResponsive">-->
+            <!--                <ul class="navbar-nav ms-auto">-->
+            <!--                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Portfolio</a></li>-->
+            <!--                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>-->
+            <!--                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
             <div class="col-md-6">
-                <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
                 <!-- 로그인 기능 영역 -->
-                {{#userName}}
-                    Logged in as: <span id="user">{{userName}}</span>
-                    <a href="/logout" class="btn btn-info active" role="button">Logout</a>
-                {{/userName}}
-                {{^userName}}
+                    <!--                {{#loginName}}-->
+                <!--                    Logged in as: <span id="user">{{loginName}}</span>-->
+                <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+                    <!--                {{/loginName}}-->
+                {{^loginName}}
                     <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
-                {{/userName}}
+
+                    <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
+                {{/loginName}}
+            </div>
+            <div class="col-md-6" style="text-align: right">
+                <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
             </div>
         </div>
-    </div>
-    <br>
+    </nav>
+    <header class="masthead bg-primary text-white text-center">
+        <div class="container d-flex align-items-center flex-column">
+            <!-- Masthead Avatar Image-->
+            <!--            <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />-->
+            <!-- Masthead Heading-->
+            <h1 class="masthead-heading text-uppercase mb-0">소셜로그인 게시판</h1>
+            <!-- Icon Divider-->
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Masthead Subheading-->
+            {{#loginName}}
+                <span id="user">{{loginName}} 님이 로그인 하셨습니다.</span>
+            {{/loginName}}
+            {{^loginName}}
+                <p class="masthead-subheading font-weight-light mb-0">구글이나 네이버로 간편하게 로그인할 수 있습니다.</p>
+            {{/loginName}}
+        </div>
+    </header>
+<!--    <h1>소셜로그인 게시판</h1>-->
+<!--    <div class="col-md-12">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-6">-->
+<!--                <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>-->
+<!--                &lt;!&ndash; 로그인 기능 영역 &ndash;&gt;-->
+<!--                {{#loginName}}-->
+<!--                    Logged in as: <span id="user">{{loginName}}</span>-->
+<!--                    <a href="/logout" class="btn btn-info active" role="button">Logout</a>-->
+<!--                {{/loginName}}-->
+<!--                {{^loginName}}-->
+<!--                    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>-->
+
+<!--                    <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>-->
+<!--                {{/loginName}}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <br>-->
     <!-- 목록 출력 영역 -->
     <table class="table table-horizontal table-bordered">
         <thead class="thead-strong">
@@ -44,6 +98,6 @@
         {{/posts}}
         </tbody>
     </table>
-    {{>layout/footer}}
 </body>
+{{>layout/footer}}
 </html>
